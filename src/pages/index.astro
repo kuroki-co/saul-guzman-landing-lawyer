@@ -1,0 +1,24 @@
+---
+import Header from "../features/header/Header.astro";
+import Hero from "../features/hero/Hero.astro";
+import MobileNavigation from "../features/mobile-navigation/MobileNavigation.astro";
+import About from "../features/about/About.astro";
+import Services from "../features/services/Services.astro";
+import ContactCta from "../features/contact/ContactCta.astro";
+import Footer from "../features/footer/Footer.astro";
+import FloatingWhatsApp from "../features/whatsapp/FloatingWhatsApp.astro";
+import BaseLayout from "../shared/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Saul Guzman — Abogado">
+  <Header />
+  <main>
+    <Hero />
+    <About />
+    <Services />
+    <ContactCta />
+  </main>
+  <MobileNavigation />
+  <Footer />
+  <FloatingWhatsApp />
+</BaseLayout>

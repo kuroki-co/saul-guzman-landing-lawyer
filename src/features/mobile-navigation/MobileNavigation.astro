@@ -1,0 +1,104 @@
+---
+const navItems = [
+  { label: "Sobre mí", href: "#sobre-mi" },
+  { label: "Servicios", href: "#servicios" },
+  { label: "Contacto", href: "#contacto" },
+] as const;
+---
+
+<div
+  class="pointer-events-none fixed inset-0 z-[60] opacity-0 transition duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] data-[open=true]:pointer-events-auto data-[open=true]:opacity-100 md:hidden"
+  data-menu-backdrop
+  data-open="false"
+>
+  <button
+    type="button"
+    aria-label="Cerrar menú"
+    class="absolute inset-0 bg-black/40 backdrop-blur-[3px]"
+    data-menu-close
+  ></button>
+</div>
+
+<aside
+  class="fixed bottom-0 right-0 top-0 z-[70] w-[80vw] max-w-96 translate-x-full bg-[#061325] px-7 py-7 text-[#efeee9] transition duration-[600ms] ease-[cubic-bezier(0.76,0,0.24,1)] data-[open=true]:translate-x-0 md:hidden"
+  data-mobile-drawer
+  data-open="false"
+  aria-hidden="true"
+>
+  <button
+    type="button"
+    aria-label="Cerrar menú"
+    class="absolute right-6 top-6 h-[26px] w-[26px] rotate-90 opacity-0 transition delay-0 duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] data-[open=true]:rotate-0 data-[open=true]:opacity-100 data-[open=true]:delay-300"
+    data-menu-close
+    data-drawer-close-icon
+    data-open="false"
+  >
+    <span class="absolute left-1/2 top-1/2 h-px w-[26px] -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[#c99732]"></span>
+    <span class="absolute left-1/2 top-1/2 h-px w-[26px] -translate-x-1/2 -translate-y-1/2 -rotate-45 bg-[#c99732]"></span>
+  </button>
+
+  <div class="flex h-full flex-col justify-center pt-20">
+    <nav aria-label="Indice del sitio">
+      <p class="drawer-reveal translate-y-6 text-[0.68rem] uppercase tracking-[0.28em] text-[#efeee9]/50 opacity-0 transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" style="transition-delay: 250ms;">
+        SITE INDEX
+      </p>
+      <ul class="mt-8 space-y-5">
+        {
+          navItems.map((item, index) => (
+            <li
+              class="drawer-reveal translate-y-6 opacity-0 transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+              style={`transition-delay: ${300 + index * 80}ms;`}
+            >
+              <a class="block text-4xl font-medium leading-none tracking-normal transition-colors duration-300 hover:text-[#c99732]" href={item.href} data-menu-close>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</aside>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+  const drawer = document.querySelector<HTMLElement>("[data-mobile-drawer]");
+  const backdrop = document.querySelector<HTMLElement>("[data-menu-backdrop]");
+  const closeIcon = document.querySelector<HTMLElement>("[data-drawer-close-icon]");
+  const closeButtons = document.querySelectorAll<HTMLElement>("[data-menu-close]");
+  const revealItems = document.querySelectorAll<HTMLElement>(".drawer-reveal");
+
+  const setMenuState = (isOpen: boolean) => {
+    toggle?.classList.toggle("is-open", isOpen);
+    toggle?.setAttribute("aria-expanded", String(isOpen));
+    toggle?.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+    drawer?.setAttribute("data-open", String(isOpen));
+    drawer?.setAttribute("aria-hidden", String(!isOpen));
+    backdrop?.setAttribute("data-open", String(isOpen));
+    closeIcon?.setAttribute("data-open", String(isOpen));
+    document.body.classList.toggle("menu-open", isOpen);
+    document.querySelector<HTMLElement>("[data-site-header]")?.setAttribute("data-hidden", "false");
+
+    revealItems.forEach((item) => {
+      item.classList.toggle("translate-y-6", !isOpen);
+      item.classList.toggle("translate-y-0", isOpen);
+      item.classList.toggle("opacity-0", !isOpen);
+      item.classList.toggle("opacity-100", isOpen);
+    });
+  };
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") !== "true";
+    setMenuState(isOpen);
+  });
+
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", () => setMenuState(false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMenuState(false);
+    }
+  });
+</script>

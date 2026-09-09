@@ -1,0 +1,62 @@
+---
+const navItems = [
+  { label: "Sobre mí", href: "#sobre-mi" },
+  { label: "Servicios", href: "#servicios" },
+  { label: "Contacto", href: "#contacto" },
+] as const;
+
+const linkedinUrl = "https://www.linkedin.com/in/w-sa%C3%BAl-guzm%C3%A1n-v%C3%A1squez-a561981b7/";
+---
+
+<footer class="bg-[#010913] px-5 pb-8 pt-16 text-[#efeee9] md:px-8 md:pb-10 md:pt-20 lg:px-12">
+  <div class="mx-auto max-w-[1800px] border-t border-[#c99732]/60 pt-12">
+    <div class="grid gap-12 md:grid-cols-[1.2fr_0.8fr_1fr] md:gap-10">
+      <div class="scroll-reveal">
+        <img src="/images/sg-logo.jpeg" alt="" width="640" height="640" class="h-16 w-auto" loading="lazy" />
+        <p class="mt-6 max-w-[18rem] text-[1.1rem] leading-[1.35] text-[#efeee9]">Wilfredo Saúl Guzmán Vásquez</p>
+        <p class="mt-2 text-[0.72rem] uppercase tracking-[0.18em] text-[#c99732]/78">Abogado</p>
+      </div>
+
+      <nav class="scroll-reveal" aria-label="Navegación de pie de página">
+        <p class="text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[#c99732]/78">Navegación</p>
+        <ul class="mt-6 space-y-3 text-[0.95rem] text-[#efeee9]/72">
+          {
+            navItems.map((item) => (
+              <li>
+                <a class="transition duration-300 hover:text-[#c99732] focus:outline-none focus-visible:text-[#c99732]" href={item.href}>
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="scroll-reveal">
+        <p class="text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[#c99732]/78">Contacto</p>
+        <ul class="mt-6 space-y-3 text-[0.95rem] text-[#efeee9]/72">
+          <li>
+            <a class="transition duration-300 hover:text-[#c99732] focus:outline-none focus-visible:text-[#c99732]" href="mailto:guzmanlegal337@gmail.com">
+              guzmanlegal337@gmail.com
+            </a>
+          </li>
+          <li>
+            <a class="transition duration-300 hover:text-[#c99732] focus:outline-none focus-visible:text-[#c99732]" href="https://wa.me/51949135876" target="_blank" rel="noreferrer">
+              +51 949 135 876
+            </a>
+          </li>
+          <li>
+            <a class="transition duration-300 hover:text-[#c99732] focus:outline-none focus-visible:text-[#c99732]" href={linkedinUrl} target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-14 flex flex-col gap-3 border-t border-[#efeee9]/14 pt-6 text-[0.72rem] text-[#efeee9]/48 md:flex-row md:items-center md:justify-between">
+      <p>© 2026 Wilfredo Saúl Guzmán Vásquez</p>
+      <p>Todos los derechos reservados</p>
+    </div>
+  </div>
+</footer>

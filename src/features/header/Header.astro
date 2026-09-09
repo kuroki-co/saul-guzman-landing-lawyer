@@ -1,0 +1,97 @@
+---
+const navItems = [
+  { label: "Sobre mí", href: "#sobre-mi" },
+  { label: "Servicios", href: "#servicios" },
+  { label: "Contacto", href: "#contacto" },
+] as const;
+---
+
+<header
+  class="fixed inset-x-0 top-0 z-50 px-5 py-3 text-[#efeee9] transition duration-[450ms] ease-[cubic-bezier(0.76,0,0.24,1)] data-[hidden=true]:-translate-y-full data-[scrolled=true]:bg-[#020d1d]/90 data-[scrolled=true]:backdrop-blur-[14px] md:px-8 lg:px-12 lg:py-4"
+  data-site-header
+  data-scrolled="false"
+  data-hidden="false"
+>
+  <div class="mx-auto flex w-full max-w-[1800px] items-center justify-between gap-6">
+    <a
+      href="/"
+      class="reveal flex items-center gap-3 opacity-95 transition-opacity duration-300 hover:opacity-70"
+      style="animation-delay: 800ms;"
+      aria-label="Saul Guzman"
+    >
+      <img
+        src="/images/sg-logo.jpeg"
+        alt=""
+        width="640"
+        height="640"
+        class="h-20 w-auto"
+      />
+    </a>
+
+    <div class="hidden items-center gap-10 text-[0.72rem] uppercase tracking-[0.14em] md:flex lg:gap-14">
+      <nav aria-label="Navegación principal">
+        <ul class="flex gap-5 lg:gap-8">
+          {
+            navItems.map((item, index) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="reveal block opacity-80 transition duration-300 hover:text-[#c99732] hover:opacity-100"
+                  style={`animation-delay: ${1000 + index * 80}ms;`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <button
+      class="reveal group relative z-[80] h-9 w-9 md:hidden"
+      type="button"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      data-menu-toggle
+      style="animation-delay: 900ms;"
+    >
+      <span class="absolute left-1/2 top-[10px] h-px w-7 -translate-x-1/2 bg-[#efeee9] transition duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-[.is-open]:top-1/2 group-[.is-open]:rotate-45 group-[.is-open]:bg-[#c99732]"></span>
+      <span class="absolute left-1/2 top-1/2 h-px w-7 -translate-x-1/2 bg-[#efeee9] transition duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-[.is-open]:opacity-0"></span>
+      <span class="absolute left-1/2 bottom-[10px] h-px w-7 -translate-x-1/2 bg-[#efeee9] transition duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-[.is-open]:bottom-1/2 group-[.is-open]:-rotate-45 group-[.is-open]:bg-[#c99732]"></span>
+    </button>
+  </div>
+</header>
+
+<script>
+  const siteHeader = document.querySelector<HTMLElement>("[data-site-header]");
+
+  if (siteHeader) {
+    let lastScrollY = window.scrollY;
+    const topThreshold = 100;
+    const directionThreshold = 12;
+
+    const updateHeader = () => {
+      const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY;
+      const isMenuOpen = document.body.classList.contains("menu-open");
+      const isAtTop = currentScrollY <= topThreshold;
+
+      siteHeader.setAttribute("data-scrolled", String(!isAtTop));
+
+      if (isAtTop || isMenuOpen) {
+        siteHeader.setAttribute("data-hidden", "false");
+      } else if (Math.abs(delta) >= directionThreshold) {
+        siteHeader.setAttribute("data-hidden", String(delta > 0));
+        lastScrollY = currentScrollY;
+      }
+
+      if (Math.abs(delta) >= directionThreshold || isAtTop) {
+        lastScrollY = currentScrollY;
+      }
+    };
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+  }
+</script>
