@@ -4,12 +4,17 @@ import "../../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 
 const {
-  title = "Saul Guzman — Abogado",
-  description = "Landing page personal de Saul Guzman, abogado especializado en asesoría legal y defensa estratégica.",
+  title = "Wilfredo Saúl Guzmán Vásquez — Abogado",
+  description = "Abogado especializado en protección al consumidor, marcas, propiedad intelectual y consumos fraudulentos.",
+  ogImage = "/images/abogado.png",
 } = Astro.props;
+
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+const socialImage = Astro.site ? new URL(ogImage, Astro.site).href : ogImage;
 ---
 
 <!doctype html>
@@ -20,14 +25,31 @@ const {
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#020d1d" />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_PE" />
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content="Asesoría legal en protección al consumidor, marcas, propiedad intelectual y consumos fraudulentos."
+    />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta
+      name="twitter:description"
+      content="Asesoría legal en protección al consumidor, marcas, propiedad intelectual y consumos fraudulentos."
+    />
+    <meta name="twitter:image" content={socialImage} />
     <title>{title}</title>
   </head>
   <body class="antialiased">
     <slot />
     <script>
-      const revealItems = document.querySelectorAll<HTMLElement>(".scroll-reveal");
+      const revealItems = document.querySelectorAll<HTMLElement>(".scroll-reveal, .rule-reveal");
 
       if (revealItems.length > 0) {
         const observer = new IntersectionObserver(

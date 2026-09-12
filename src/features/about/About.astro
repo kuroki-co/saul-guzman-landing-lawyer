@@ -5,33 +5,26 @@ const biography = [
 ] as const;
 ---
 
-<section id="sobre-mi" class="relative overflow-hidden bg-[#efeee9] px-5 py-24 text-[#020d1d] md:px-8 md:py-32 lg:min-h-[92vh] lg:px-12 lg:py-36">
-  <p
-    class="editorial-statement pointer-events-none absolute -bottom-6 left-4 text-[22vw] uppercase leading-none text-[#020d1d] opacity-[0.045] md:left-8 lg:-bottom-12 lg:left-12"
-    aria-hidden="true"
-  >
-    Estrategia
-  </p>
-
-  <div class="relative mx-auto grid min-h-[64vh] max-w-[1800px] items-center gap-14 border-t border-[#c99732]/55 pt-12 md:grid-cols-[minmax(18rem,0.9fr)_minmax(0,1fr)] md:gap-16 lg:gap-24 lg:pt-16">
+<section id="sobre-mi" class="relative overflow-hidden bg-[#efeee9] px-5 py-24 text-[#020d1d] md:px-8 md:py-32 lg:px-12 lg:py-40">
+  <div class="relative mx-auto grid max-w-[1800px] gap-16 border-t border-[#c99732]/55 pt-12 md:min-h-[68vh] md:grid-cols-[minmax(18rem,0.9fr)_minmax(0,1fr)] md:items-center md:gap-16 md:pt-20 lg:min-h-[70vh] lg:gap-24 lg:pt-24">
     <div class="scroll-reveal">
       <div>
         <p class="text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[#c99732]">01</p>
-        <p class="mt-3 text-[0.72rem] font-medium uppercase tracking-[0.18em] text-[#020d1d]/58">Sobre mí</p>
+        <h2 class="mt-3 text-[0.72rem] font-medium uppercase tracking-[0.18em] text-[#020d1d]/58">Sobre mí</h2>
       </div>
 
-      <h2 class="editorial-statement mt-12 text-[3.1rem] text-[#020d1d] md:text-[4.6rem] lg:text-[5.4rem]">
+      <p class="editorial-statement mt-12 text-[3.1rem] text-[#020d1d] md:mt-14 md:text-[4.6rem] lg:mt-16 lg:text-[5.4rem]">
         Wilfredo Saúl<br />
         Guzmán Vásquez
-      </h2>
+      </p>
     </div>
 
-    <div class="max-w-[680px] md:pt-20">
-      <p class="scroll-reveal text-[1.12rem] leading-[1.55] text-[#020d1d]/82 md:text-[1.28rem]">
+    <div class="max-w-[680px] md:pt-16 lg:pt-20">
+      <p class="scroll-reveal text-[1.12rem] leading-[1.6] text-[#020d1d]/82 md:text-[1.28rem]" data-reveal="body">
         Abogado especializado en protección al consumidor, marcas, propiedad intelectual y operaciones de consumo fraudulentas.
       </p>
 
-      <div class="scroll-reveal mt-10 grid gap-6 border-l border-[#c99732]/60 pl-6 text-[1rem] leading-[1.75] text-[#020d1d]/70 md:pl-8 md:text-[1.06rem]">
+      <div class="scroll-reveal mt-10 grid gap-6 border-l border-[#c99732]/60 pl-6 text-[1rem] leading-[1.75] text-[#020d1d]/70 md:mt-12 md:gap-7 md:pl-8 md:text-[1.06rem]" data-reveal="body">
         {
           biography.map((paragraph) => (
             <p>{paragraph}</p>

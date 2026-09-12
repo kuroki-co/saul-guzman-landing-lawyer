@@ -22,7 +22,8 @@ const services = [
 ---
 
 <section id="servicios" class="bg-[#020d1d] px-5 py-24 text-[#efeee9] md:px-8 md:py-36 lg:px-12 lg:py-40">
-  <div class="mx-auto max-w-[1800px] border-t border-[#c99732]/55 pt-12 lg:pt-16">
+  <div class="mx-auto max-w-[1800px] pt-12 lg:pt-16">
+    <div class="rule-reveal mb-12 h-px w-full origin-left bg-[#c99732]/55 lg:mb-16" aria-hidden="true"></div>
     <div class="grid gap-12 md:grid-cols-[12rem_1fr] md:gap-16 lg:grid-cols-[18rem_1fr]">
       <div class="scroll-reveal">
         <p class="text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[#c99732]/78">02</p>
@@ -30,10 +31,10 @@ const services = [
       </div>
 
       <div>
-        <h2 class="editorial-statement scroll-reveal text-[3rem] text-[#efeee9] md:text-[4.6rem] lg:text-[5.4rem]">
+        <h2 class="editorial-statement scroll-reveal text-[3rem] text-[#efeee9] md:text-[4.6rem] lg:text-[5.4rem]" data-reveal="heading">
           Áreas de práctica
         </h2>
-        <p class="scroll-reveal mt-6 max-w-[620px] text-[1.06rem] leading-[1.7] text-[#efeee9]/68 md:text-[1.16rem]">
+        <p class="scroll-reveal mt-6 max-w-[620px] text-[1.06rem] leading-[1.7] text-[#efeee9]/68 md:text-[1.16rem]" data-reveal="body">
           Asesoría legal especializada para proteger tus derechos, activos e intereses.
         </p>
       </div>
@@ -43,19 +44,20 @@ const services = [
       {
         services.map((service, index) => (
           <article
-            class="scroll-reveal group grid gap-6 border-b border-[#efeee9]/18 py-10 transition duration-[350ms] hover:border-[#c99732]/75 md:grid-cols-[7rem_1fr_2rem] md:gap-10 md:py-14"
+            class="scroll-reveal group grid gap-5 border-b border-[#efeee9]/18 py-10 transition duration-[350ms] hover:border-[#c99732]/75 md:grid-cols-[7rem_1fr_2rem] md:gap-10 md:py-14"
             style={`transition-delay: ${index * 120}ms;`}
+            data-reveal="body"
           >
             <p class="text-[0.72rem] font-medium tracking-[0.18em] text-[#c99732]/78">{service.number}</p>
             <div>
-              <h3 class="editorial-statement text-[2.45rem] text-[#efeee9] transition duration-[350ms] group-hover:translate-x-2 group-hover:text-[#c99732] md:text-[3.2rem] lg:text-[3.6rem]">
+              <h3 class="editorial-statement text-[2.25rem] text-[#efeee9] transition duration-[350ms] group-hover:translate-x-2 group-hover:text-[#c99732] md:text-[3rem] lg:text-[3.625rem]">
                 {service.title}
               </h3>
               <p class="mt-5 max-w-[680px] text-[0.98rem] leading-[1.75] text-[#efeee9]/66 md:text-[1.05rem]">
                 {service.description}
               </p>
             </div>
-            <span class="text-2xl leading-none text-[#efeee9]/52 transition duration-[350ms] group-hover:translate-x-2 group-hover:text-[#c99732]" aria-hidden="true">
+            <span class="justify-self-end text-2xl leading-none text-[#efeee9]/52 transition duration-[350ms] group-hover:translate-x-2 group-hover:text-[#c99732] md:justify-self-auto" aria-hidden="true">
               →
             </span>
           </article>

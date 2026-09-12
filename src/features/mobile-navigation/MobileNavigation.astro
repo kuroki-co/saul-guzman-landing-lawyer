@@ -14,7 +14,7 @@ const navItems = [
   <button
     type="button"
     aria-label="Cerrar menú"
-    class="absolute inset-0 bg-black/40 backdrop-blur-[3px]"
+    class="absolute inset-0 bg-black/40 backdrop-blur-[3px] focus:outline-none"
     data-menu-close
   ></button>
 </div>
@@ -28,7 +28,7 @@ const navItems = [
   <button
     type="button"
     aria-label="Cerrar menú"
-    class="absolute right-6 top-6 h-[26px] w-[26px] rotate-90 opacity-0 transition delay-0 duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] data-[open=true]:rotate-0 data-[open=true]:opacity-100 data-[open=true]:delay-300"
+    class="absolute right-6 top-6 h-[26px] w-[26px] rotate-90 opacity-0 transition delay-0 duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c99732] focus-visible:ring-offset-4 focus-visible:ring-offset-[#061325] data-[open=true]:rotate-0 data-[open=true]:opacity-100 data-[open=true]:delay-300"
     data-menu-close
     data-drawer-close-icon
     data-open="false"
@@ -49,7 +49,7 @@ const navItems = [
               class="drawer-reveal translate-y-6 opacity-0 transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
               style={`transition-delay: ${300 + index * 80}ms;`}
             >
-              <a class="block text-4xl font-medium leading-none tracking-normal transition-colors duration-300 hover:text-[#c99732]" href={item.href} data-menu-close>
+              <a class="block text-4xl font-medium leading-none tracking-normal transition-colors duration-300 hover:text-[#c99732] focus:outline-none focus-visible:text-[#c99732]" href={item.href} data-menu-close>
                 {item.label}
               </a>
             </li>

@@ -7,7 +7,7 @@ const navItems = [
 ---
 
 <header
-  class="fixed inset-x-0 top-0 z-50 px-5 py-3 text-[#efeee9] transition duration-[450ms] ease-[cubic-bezier(0.76,0,0.24,1)] data-[hidden=true]:-translate-y-full data-[scrolled=true]:bg-[#020d1d]/90 data-[scrolled=true]:backdrop-blur-[14px] md:px-8 lg:px-12 lg:py-4"
+  class="fixed inset-x-0 top-0 z-50 border-b border-transparent px-5 py-2.5 text-[#efeee9] transition duration-[450ms] ease-[cubic-bezier(0.76,0,0.24,1)] data-[hidden=true]:-translate-y-full data-[scrolled=true]:border-[#c99732]/35 data-[scrolled=true]:bg-[#020d1d]/90 data-[scrolled=true]:backdrop-blur-[14px] md:px-8 lg:px-12 lg:py-3"
   data-site-header
   data-scrolled="false"
   data-hidden="false"
@@ -15,20 +15,20 @@ const navItems = [
   <div class="mx-auto flex w-full max-w-[1800px] items-center justify-between gap-6">
     <a
       href="/"
-      class="reveal flex items-center gap-3 opacity-95 transition-opacity duration-300 hover:opacity-70"
+      class="reveal flex items-center gap-3 opacity-95 transition-opacity duration-300 hover:opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c99732] focus-visible:ring-offset-4 focus-visible:ring-offset-[#020d1d]"
       style="animation-delay: 800ms;"
-      aria-label="Saul Guzman"
+      aria-label="Wilfredo Saúl Guzmán Vásquez"
     >
       <img
         src="/images/sg-logo.jpeg"
         alt=""
         width="640"
         height="640"
-        class="h-20 w-auto"
+        class="h-16 w-auto md:h-[4.25rem]"
       />
     </a>
 
-    <div class="hidden items-center gap-10 text-[0.72rem] uppercase tracking-[0.14em] md:flex lg:gap-14">
+    <div class="hidden items-center gap-10 text-[0.72rem] uppercase tracking-[0.12em] md:flex lg:gap-14">
       <nav aria-label="Navegación principal">
         <ul class="flex gap-5 lg:gap-8">
           {
@@ -36,7 +36,7 @@ const navItems = [
               <li>
                 <a
                   href={item.href}
-                  class="reveal block opacity-80 transition duration-300 hover:text-[#c99732] hover:opacity-100"
+                  class="reveal block opacity-80 transition duration-300 hover:text-[#c99732] hover:opacity-100 focus:outline-none focus-visible:text-[#c99732]"
                   style={`animation-delay: ${1000 + index * 80}ms;`}
                 >
                   {item.label}
@@ -49,7 +49,7 @@ const navItems = [
     </div>
 
     <button
-      class="reveal group relative z-[80] h-9 w-9 md:hidden"
+      class="reveal group relative z-[80] h-9 w-9 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c99732] focus-visible:ring-offset-4 focus-visible:ring-offset-[#020d1d] md:hidden"
       type="button"
       aria-label="Abrir menú"
       aria-expanded="false"
