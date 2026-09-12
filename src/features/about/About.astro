@@ -5,26 +5,24 @@ const biography = [
 ] as const;
 ---
 
-<section id="sobre-mi" class="relative overflow-hidden bg-[#efeee9] px-5 py-24 text-[#020d1d] md:px-8 md:py-32 lg:px-12 lg:py-40">
-  <div class="relative mx-auto grid max-w-[1800px] gap-16 border-t border-[#c99732]/55 pt-12 md:min-h-[68vh] md:grid-cols-[minmax(18rem,0.9fr)_minmax(0,1fr)] md:items-center md:gap-16 md:pt-20 lg:min-h-[70vh] lg:gap-24 lg:pt-24">
+<section id="sobre-mi" class="relative overflow-hidden bg-[#efeee9] px-5 py-[clamp(72px,18vw,88px)] text-[#020d1d] md:px-8 md:py-[clamp(90px,10vw,110px)] lg:px-12 lg:py-[clamp(100px,7vw,130px)]">
+  <div class="relative mx-auto grid max-w-[1800px] gap-12 border-t border-[#c99732]/55 pt-12 md:grid-cols-[minmax(0,0.61fr)_minmax(18rem,0.39fr)] md:gap-13 md:pt-16 lg:gap-[4.5rem] lg:pt-20">
     <div class="scroll-reveal">
       <div>
         <p class="text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[#c99732]">01</p>
         <h2 class="mt-3 text-[0.72rem] font-medium uppercase tracking-[0.18em] text-[#020d1d]/58">Sobre mí</h2>
       </div>
 
-      <p class="editorial-statement mt-12 text-[3.1rem] text-[#020d1d] md:mt-14 md:text-[4.6rem] lg:mt-16 lg:text-[5.4rem]">
+      <p class="editorial-statement mt-12 text-[3.1rem] leading-[0.98] text-[#020d1d] md:mt-14 md:text-[4.6rem] lg:mt-16 lg:text-[5.4rem]">
         Wilfredo Saúl<br />
         Guzmán Vásquez
       </p>
-    </div>
 
-    <div class="max-w-[680px] md:pt-16 lg:pt-20">
-      <p class="scroll-reveal text-[1.12rem] leading-[1.6] text-[#020d1d]/82 md:text-[1.28rem]" data-reveal="body">
-        Abogado especializado en protección al consumidor, marcas, propiedad intelectual y operaciones de consumo fraudulentas.
+      <p class="mt-10 max-w-[600px] text-[1.12rem] leading-[1.6] text-[#020d1d]/82 md:text-[1.28rem]">
+        Abogado especializado en protección al consumidor, marcas, propiedad intelectual y consumos fraudulentos.
       </p>
 
-      <div class="scroll-reveal mt-10 grid gap-6 border-l border-[#c99732]/60 pl-6 text-[1rem] leading-[1.75] text-[#020d1d]/70 md:mt-12 md:gap-7 md:pl-8 md:text-[1.06rem]" data-reveal="body">
+      <div class="mt-10 grid max-w-[620px] gap-6 border-l border-[#c99732]/60 pl-8 text-[1rem] leading-[1.75] text-[#020d1d]/70 md:mt-12 md:gap-7 md:pl-10 md:text-[1.06rem]">
         {
           biography.map((paragraph) => (
             <p>{paragraph}</p>
@@ -32,5 +30,16 @@ const biography = [
         }
       </div>
     </div>
+
+    <figure class="scroll-reveal relative mt-12 md:mt-[4.5rem] md:self-center lg:mt-20" data-reveal="body">
+      <img
+        src="/images/abogado-about-me.jpg"
+        alt="Wilfredo Saúl Guzmán Vásquez sentado en una silla"
+        width="3600"
+        height="2400"
+        loading="lazy"
+        class="aspect-[3/2] max-h-[360px] w-full rounded-[2px] object-cover object-[50%_50%] md:max-h-none"
+      />
+    </figure>
   </div>
 </section>
