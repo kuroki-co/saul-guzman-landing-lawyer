@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 const navItems = [
   { label: "Sobre mí", href: "#sobre-mi" },
   { label: "Servicios", href: "#servicios" },
@@ -13,7 +15,7 @@ const linkedinUrl = "https://www.linkedin.com/in/w-sa%C3%BAl-guzm%C3%A1n-v%C3%A1
     <div class="rule-reveal mb-12 h-px w-full origin-left bg-[#c99732]/60" aria-hidden="true"></div>
     <div class="grid gap-12 md:grid-cols-[1.2fr_0.8fr_1fr] md:gap-10">
       <div class="scroll-reveal">
-        <img src="/images/sg-logo.jpeg" alt="" width="640" height="640" class="h-16 w-auto" loading="lazy" />
+        <Image src="/images/sg-logo.jpeg" alt="" width="640" height="640" class="h-16 w-auto" loading="lazy" />
         <p class="mt-6 max-w-[18rem] text-[1.1rem] leading-[1.35] text-[#efeee9]">Wilfredo Saúl Guzmán Vásquez</p>
         <p class="mt-2 text-[0.72rem] uppercase tracking-[0.18em] text-[#c99732]/78">Abogado</p>
       </div>

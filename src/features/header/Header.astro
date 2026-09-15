@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 const navItems = [
   { label: "Sobre mí", href: "#sobre-mi" },
   { label: "Servicios", href: "#servicios" },
@@ -19,7 +21,7 @@ const navItems = [
       style="animation-delay: 800ms;"
       aria-label="Wilfredo Saúl Guzmán Vásquez"
     >
-      <img
+      <Image
         src="/images/sg-logo.jpeg"
         alt=""
         width="640"
