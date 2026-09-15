@@ -10,19 +10,19 @@ const navItems = [
 const linkedinUrl = "https://www.linkedin.com/in/w-sa%C3%BAl-guzm%C3%A1n-v%C3%A1squez-a561981b7/";
 ---
 
-<footer class="bg-[#010913] px-5 pb-8 pt-16 text-[#efeee9] md:px-8 md:pb-10 md:pt-20 lg:px-12">
-  <div class="mx-auto max-w-[1800px] pt-12">
-    <div class="rule-reveal mb-12 h-px w-full origin-left bg-[#c99732]/60" aria-hidden="true"></div>
-    <div class="grid gap-12 md:grid-cols-[1.2fr_0.8fr_1fr] md:gap-10">
+<footer class="bg-[#010913] pb-8 pt-14 text-[#efeee9] md:pb-10 md:pt-18 lg:pt-20">
+  <div class="mx-auto max-w-[1520px] px-5 md:px-8 lg:px-14">
+    <div class="rule-reveal mb-10 h-px w-full origin-left bg-[#c99732]/60 md:mb-12" aria-hidden="true"></div>
+    <div class="grid gap-11 md:grid-cols-[2fr_0.82fr_1fr] md:gap-10 lg:grid-cols-[2fr_0.7fr_0.9fr] lg:gap-12">
       <div class="scroll-reveal">
         <Image src="/images/sg-logo.jpeg" alt="" width="640" height="640" class="h-16 w-auto" loading="lazy" />
-        <p class="mt-6 max-w-[18rem] text-[1.1rem] leading-[1.35] text-[#efeee9]">Wilfredo Saúl Guzmán Vásquez</p>
-        <p class="mt-2 text-[0.72rem] uppercase tracking-[0.18em] text-[#c99732]/78">Abogado</p>
+        <p class="mt-7 max-w-[18rem] text-[1.1rem] leading-[1.35] text-[#efeee9]">Wilfredo Saúl Guzmán Vásquez</p>
+        <p class="mt-2.5 text-[0.72rem] uppercase tracking-[0.13em] text-[#c99732]/78">Abogado</p>
       </div>
 
       <nav class="scroll-reveal" aria-label="Navegación de pie de página">
         <p class="text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[#c99732]/78">Navegación</p>
-        <ul class="mt-6 space-y-3 text-[0.95rem] text-[#efeee9]/72">
+        <ul class="mt-6 space-y-4 text-[0.95rem] text-[#efeee9]/72">
           {
             navItems.map((item) => (
               <li>
@@ -37,7 +37,7 @@ const linkedinUrl = "https://www.linkedin.com/in/w-sa%C3%BAl-guzm%C3%A1n-v%C3%A1
 
       <div class="scroll-reveal">
         <p class="text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[#c99732]/78">Contacto</p>
-        <ul class="mt-6 space-y-3 text-[0.95rem] text-[#efeee9]/72">
+        <ul class="mt-6 space-y-4 text-[0.95rem] text-[#efeee9]/72">
           <li>
             <a
               class="transition duration-300 hover:text-[#c99732] focus:outline-none focus-visible:text-[#c99732] focus-visible:underline"
@@ -73,9 +73,9 @@ const linkedinUrl = "https://www.linkedin.com/in/w-sa%C3%BAl-guzm%C3%A1n-v%C3%A1
       </div>
     </div>
 
-    <div class="mt-14 flex flex-col gap-3 border-t border-[#efeee9]/14 pt-6 text-[0.72rem] text-[#efeee9]/48 md:flex-row md:items-center md:justify-between">
+    <div class="mt-12 flex flex-col gap-3 border-t border-[#efeee9]/14 pt-6 text-[0.72rem] text-[#efeee9]/48 md:mt-14 md:flex-row md:items-center md:justify-between md:pt-7">
       <p>© 2026 Wilfredo Saúl Guzmán Vásquez</p>
-      <p>Todos los derechos reservados</p>
+      <p class="md:pr-16 lg:pr-20">Todos los derechos reservados</p>
     </div>
   </div>
 </footer>

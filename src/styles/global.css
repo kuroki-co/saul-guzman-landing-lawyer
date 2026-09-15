@@ -109,6 +109,16 @@ a {
   line-height: 0.9;
 }
 
+@media (max-width: 767px) {
+  .marquee-track {
+    animation-duration: 36s;
+  }
+
+  .marquee-name {
+    color: rgba(239, 238, 233, 0.3);
+  }
+}
+
 @media (min-width: 1024px) {
   .marquee-name {
     color: rgba(239, 238, 233, 0.38);
