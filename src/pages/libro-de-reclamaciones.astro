@@ -1,0 +1,551 @@
+---
+import Header from "../features/header/Header.astro";
+import MobileNavigation from "../features/mobile-navigation/MobileNavigation.astro";
+import Footer from "../features/footer/Footer.astro";
+import FloatingWhatsApp from "../features/whatsapp/FloatingWhatsApp.astro";
+import { serviceOptions } from "../features/reclamaciones/data";
+import BaseLayout from "../shared/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Libro de Reclamaciones Virtual — Wilfredo Saúl Guzmán Vásquez"
+  description="Registra tu reclamo o queja relacionado con los servicios brindados por Wilfredo Saúl Guzmán Vásquez."
+>
+  <Header />
+
+  <main class="bg-[#efeee9] text-[#020d1d]">
+    <section class="px-5 pb-20 pt-32 md:px-8 md:pb-28 md:pt-40 lg:px-12 lg:pb-32">
+      <div class="mx-auto max-w-[1080px]">
+        <div class="border-t border-[#c99732]/60 pt-12 md:pt-16">
+          <p class="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-[#c99732]">
+            Libro de Reclamaciones
+          </p>
+          <h1 class="editorial-statement mt-5 max-w-[760px] text-[3.1rem] leading-[0.98] text-[#020d1d] md:text-[4.6rem] lg:text-[5.3rem]">
+            Libro de Reclamaciones Virtual
+          </h1>
+          <p class="mt-7 max-w-[620px] text-[1.05rem] leading-[1.7] text-[#020d1d]/68 md:text-[1.14rem]">
+            Registra aquí tu reclamo o queja relacionado con los servicios brindados.
+          </p>
+        </div>
+
+        <section
+          class="mt-14 hidden border-y border-[#c99732]/45 py-10 md:mt-16"
+          data-success
+          aria-live="polite"
+        >
+          <p class="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-[#c99732]">Registro recibido</p>
+          <h2 class="editorial-statement mt-5 text-[2.55rem] leading-[1] text-[#020d1d] md:text-[3.4rem]">
+            Tu reclamo o queja fue registrado correctamente
+          </h2>
+          <p class="mt-6 text-[1.05rem] leading-[1.65] text-[#020d1d]/70">
+            Hoja de Reclamación N.° <span class="font-medium text-[#020d1d]" data-success-correlativo></span>
+          </p>
+          <p class="mt-2 text-[0.95rem] text-[#020d1d]/58">
+            Fecha: <span data-success-fecha></span>
+          </p>
+          <p class="mt-6 max-w-[620px] text-[1rem] leading-[1.7] text-[#020d1d]/68">
+            Tu registro fue recibido correctamente. Conserva esta Hoja de Reclamación para futuras consultas.
+          </p>
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <button
+              type="button"
+              class="w-full border border-[#020d1d] bg-[#020d1d] px-6 py-4 text-[0.78rem] font-medium uppercase tracking-[0.12em] text-[#efeee9] transition duration-300 hover:border-[#c99732] hover:bg-[#c99732] hover:text-[#020d1d] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c99732] focus-visible:ring-offset-4 focus-visible:ring-offset-[#efeee9] sm:w-auto"
+              data-download-pdf
+            >
+              Descargar Hoja de Reclamación (PDF)
+            </button>
+            <a
+              href="/"
+              class="inline-flex justify-center px-6 py-4 text-[0.78rem] font-medium uppercase tracking-[0.12em] text-[#020d1d]/60 transition duration-300 hover:text-[#c99732] focus:outline-none focus-visible:text-[#c99732]"
+            >
+              Volver al inicio
+            </a>
+          </div>
+        </section>
+
+        <form class="mt-14 space-y-14 md:mt-16 md:space-y-16" data-reclamacion-form novalidate>
+          <section class="border-t border-[#020d1d]/16 pt-10">
+            <div class="grid gap-8 md:grid-cols-[10rem_1fr] md:gap-12">
+              <div>
+                <p class="text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[#c99732]">01</p>
+                <h2 class="mt-3 text-[0.75rem] font-medium uppercase tracking-[0.18em] text-[#020d1d]/58">
+                  Datos del consumidor
+                </h2>
+              </div>
+
+              <div class="grid gap-6 md:grid-cols-2">
+                <div class="field">
+                  <label for="tipo_documento">Tipo de documento *</label>
+                  <select id="tipo_documento" name="tipo_documento" autocomplete="off" aria-describedby="tipo_documento-error">
+                    <option value="DNI">DNI</option>
+                    <option value="CE">CE</option>
+                  </select>
+                  <p class="field-error" id="tipo_documento-error" data-error-for="tipo_documento"></p>
+                </div>
+
+                <div class="field">
+                  <label for="numero_documento">Número de Documento *</label>
+                  <input id="numero_documento" name="numero_documento" type="text" autocomplete="off" aria-describedby="numero_documento-error" />
+                  <p class="field-error" id="numero_documento-error" data-error-for="numero_documento"></p>
+                </div>
+
+                <div class="field md:col-span-2">
+                  <label for="nombres_apellidos">Nombres y Apellidos *</label>
+                  <input id="nombres_apellidos" name="nombres_apellidos" type="text" autocomplete="name" aria-describedby="nombres_apellidos-error" />
+                  <p class="field-error" id="nombres_apellidos-error" data-error-for="nombres_apellidos"></p>
+                </div>
+
+                <div class="field md:col-span-2">
+                  <label for="domicilio_consumidor">Domicilio del consumidor *</label>
+                  <input id="domicilio_consumidor" name="domicilio_consumidor" type="text" autocomplete="street-address" aria-describedby="domicilio_consumidor-error" />
+                  <p class="field-error" id="domicilio_consumidor-error" data-error-for="domicilio_consumidor"></p>
+                </div>
+
+                <div class="field">
+                  <label for="telefono">Teléfono de contacto *</label>
+                  <input id="telefono" name="telefono" type="tel" autocomplete="tel" aria-describedby="telefono-error" />
+                  <p class="field-error" id="telefono-error" data-error-for="telefono"></p>
+                </div>
+
+                <div class="field">
+                  <label for="email">Email *</label>
+                  <input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" />
+                  <p class="field-error" id="email-error" data-error-for="email"></p>
+                </div>
+
+                <div class="md:col-span-2">
+                  <label class="flex gap-3 text-[0.95rem] leading-[1.5] text-[#020d1d]/74">
+                    <input class="mt-1 h-4 w-4 accent-[#c99732]" type="checkbox" name="es_menor" data-minor-toggle />
+                    <span>El consumidor es menor de edad</span>
+                  </label>
+                </div>
+
+                <div class="hidden gap-6 md:col-span-2 md:grid-cols-2" data-representative-fields>
+                  <div class="field">
+                    <label for="representante_nombre">Nombre del padre, madre o representante *</label>
+                    <input id="representante_nombre" name="representante_nombre" type="text" autocomplete="name" aria-describedby="representante_nombre-error" />
+                    <p class="field-error" id="representante_nombre-error" data-error-for="representante_nombre"></p>
+                  </div>
+
+                  <div class="field">
+                    <label for="representante_domicilio">Domicilio del representante *</label>
+                    <input id="representante_domicilio" name="representante_domicilio" type="text" autocomplete="street-address" aria-describedby="representante_domicilio-error" />
+                    <p class="field-error" id="representante_domicilio-error" data-error-for="representante_domicilio"></p>
+                  </div>
+
+                  <div class="field">
+                    <label for="representante_telefono">Teléfono del representante *</label>
+                    <input id="representante_telefono" name="representante_telefono" type="tel" autocomplete="tel" aria-describedby="representante_telefono-error" />
+                    <p class="field-error" id="representante_telefono-error" data-error-for="representante_telefono"></p>
+                  </div>
+
+                  <div class="field">
+                    <label for="representante_email">Email del representante *</label>
+                    <input id="representante_email" name="representante_email" type="email" autocomplete="email" aria-describedby="representante_email-error" />
+                    <p class="field-error" id="representante_email-error" data-error-for="representante_email"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="border-t border-[#020d1d]/16 pt-10">
+            <div class="grid gap-8 md:grid-cols-[10rem_1fr] md:gap-12">
+              <div>
+                <p class="text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[#c99732]">02</p>
+                <h2 class="mt-3 text-[0.75rem] font-medium uppercase tracking-[0.18em] text-[#020d1d]/58">Servicio</h2>
+              </div>
+
+              <div class="grid gap-6 md:grid-cols-2">
+                <div class="field">
+                  <label for="servicio">Servicio relacionado *</label>
+                  <select id="servicio" name="servicio" aria-describedby="servicio-error" data-service-select>
+                    <option value="">Selecciona una opción</option>
+                    {serviceOptions.map((service) => <option value={service}>{service}</option>)}
+                  </select>
+                  <p class="field-error" id="servicio-error" data-error-for="servicio"></p>
+                </div>
+
+                <div class="field">
+                  <label for="monto_reclamado">Monto reclamado (S/) *</label>
+                  <div class="flex items-center border-b border-[#020d1d]/28 focus-within:border-[#c99732]">
+                    <span class="pr-3 text-[0.95rem] text-[#020d1d]/52">S/</span>
+                    <input class="border-0 px-0" id="monto_reclamado" name="monto_reclamado" type="number" inputmode="decimal" min="0" step="0.01" aria-describedby="monto_reclamado-error" />
+                  </div>
+                  <p class="field-error" id="monto_reclamado-error" data-error-for="monto_reclamado"></p>
+                </div>
+
+                <div class="field hidden md:col-span-2" data-other-service>
+                  <label for="servicio_otro">Especifica el servicio *</label>
+                  <input id="servicio_otro" name="servicio_otro" type="text" aria-describedby="servicio_otro-error" />
+                  <p class="field-error" id="servicio_otro-error" data-error-for="servicio_otro"></p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="border-t border-[#020d1d]/16 pt-10">
+            <div class="grid gap-8 md:grid-cols-[10rem_1fr] md:gap-12">
+              <div>
+                <p class="text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[#c99732]">03</p>
+                <h2 class="mt-3 text-[0.75rem] font-medium uppercase tracking-[0.18em] text-[#020d1d]/58">Reclamo o Queja</h2>
+              </div>
+
+              <div class="grid gap-6">
+                <div class="grid gap-6 md:grid-cols-2">
+                  <div class="field">
+                    <label for="tipo_registro">Tipo *</label>
+                    <select id="tipo_registro" name="tipo_registro" aria-describedby="tipo_registro-help tipo_registro-error" data-registry-type>
+                      <option value="reclamo">Reclamo</option>
+                      <option value="queja">Queja</option>
+                    </select>
+                    <p class="mt-2 text-[0.82rem] leading-[1.5] text-[#020d1d]/50" id="tipo_registro-help" data-registry-help>
+                      Disconformidad relacionada con el servicio contratado o recibido.
+                    </p>
+                    <p class="field-error" id="tipo_registro-error" data-error-for="tipo_registro"></p>
+                  </div>
+
+                  <div class="field">
+                    <label for="asunto">Asunto *</label>
+                    <input id="asunto" name="asunto" type="text" placeholder="Ej. Cobro no reconocido" aria-describedby="asunto-error" />
+                    <p class="field-error" id="asunto-error" data-error-for="asunto"></p>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="descripcion">Cuéntanos qué ocurrió *</label>
+                  <p class="mb-3 text-[0.86rem] leading-[1.55] text-[#020d1d]/52">
+                    Describe detalladamente los hechos relacionados con tu reclamo o queja.
+                  </p>
+                  <textarea id="descripcion" name="descripcion" rows="6" placeholder="Ingrese los detalles de esta solicitud." aria-describedby="descripcion-error"></textarea>
+                  <p class="field-error" id="descripcion-error" data-error-for="descripcion"></p>
+                </div>
+
+                <div class="field">
+                  <label for="pedido">Pedido del consumidor *</label>
+                  <p class="mb-3 text-[0.86rem] leading-[1.55] text-[#020d1d]/52">
+                    Indica concretamente qué solución solicitas.
+                  </p>
+                  <textarea id="pedido" name="pedido" rows="5" aria-describedby="pedido-error"></textarea>
+                  <p class="field-error" id="pedido-error" data-error-for="pedido"></p>
+                </div>
+
+                <div>
+                  <p class="text-[0.75rem] font-medium uppercase tracking-[0.16em] text-[#020d1d]/58">
+                    Observaciones y acciones tomadas por el proveedor
+                  </p>
+                  <div class="mt-4 border border-[#020d1d]/16 bg-[#020d1d]/[0.03] px-4 py-4 text-[0.95rem] text-[#020d1d]/58">
+                    Pendiente de atención
+                  </div>
+                  <p class="mt-2 text-[0.78rem] text-[#020d1d]/46">Para ser llenado por el abogado.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="border-t border-[#020d1d]/16 pt-10">
+            <div class="grid gap-8 md:grid-cols-[10rem_1fr] md:gap-12">
+              <div>
+                <p class="text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[#c99732]">04</p>
+                <h2 class="mt-3 text-[0.75rem] font-medium uppercase tracking-[0.18em] text-[#020d1d]/58">Confirmación</h2>
+              </div>
+
+              <div class="space-y-6">
+                <div>
+                  <label class="flex gap-3 text-[0.95rem] leading-[1.6] text-[#020d1d]/74">
+                    <input class="mt-1 h-4 w-4 shrink-0 accent-[#c99732]" type="checkbox" name="declaracion" aria-describedby="declaracion-error" />
+                    <span>Declaro que la información consignada en esta Hoja de Reclamación corresponde a los hechos que deseo registrar.</span>
+                  </label>
+                  <p class="field-error" id="declaracion-error" data-error-for="declaracion"></p>
+                </div>
+
+                <div>
+                  <label class="flex gap-3 text-[0.95rem] leading-[1.6] text-[#020d1d]/74">
+                    <input class="mt-1 h-4 w-4 shrink-0 accent-[#c99732]" type="checkbox" name="consentimiento_datos" aria-describedby="consentimiento_datos-help consentimiento_datos-error" />
+                    <span>Autorizo el tratamiento de los datos personales proporcionados únicamente para registrar, gestionar y responder este reclamo o queja.</span>
+                  </label>
+                  <p class="mt-2 pl-7 text-[0.78rem] leading-[1.5] text-[#020d1d]/48" id="consentimiento_datos-help">
+                    Los datos serán utilizados solo para gestionar el registro y la atención correspondiente.
+                  </p>
+                  <p class="field-error pl-7" id="consentimiento_datos-error" data-error-for="consentimiento_datos"></p>
+                </div>
+
+                <div class="border-l border-[#c99732]/60 pl-5 text-[0.92rem] leading-[1.65] text-[#020d1d]/62">
+                  La presentación de un reclamo o queja no limita el derecho del consumidor de acudir a otras vías de solución de controversias.
+                </div>
+
+                <p class="hidden text-[0.92rem] leading-[1.6] text-[#8b1d1d]" data-form-error aria-live="polite"></p>
+
+                <button
+                  type="submit"
+                  class="w-full border border-[#020d1d] bg-[#020d1d] px-6 py-4 text-[0.78rem] font-medium uppercase tracking-[0.12em] text-[#efeee9] transition duration-300 hover:border-[#c99732] hover:bg-[#c99732] hover:text-[#020d1d] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c99732] focus-visible:ring-offset-4 focus-visible:ring-offset-[#efeee9] md:w-auto"
+                  data-submit-button
+                >
+                  Enviar Hoja de Reclamación
+                </button>
+              </div>
+            </div>
+          </section>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <MobileNavigation />
+  <Footer />
+  <FloatingWhatsApp />
+</BaseLayout>
+
+<style>
+  .field label {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: rgb(2 13 29 / 0.68);
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid rgb(2 13 29 / 0.28);
+    border-radius: 0;
+    background: transparent;
+    padding: 0 0 0.85rem;
+    color: #020d1d;
+    font: inherit;
+    outline: none;
+    transition: border-color 220ms ease;
+  }
+
+  .field select {
+    appearance: none;
+  }
+
+  .field textarea {
+    resize: vertical;
+    line-height: 1.6;
+  }
+
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    border-color: #c99732;
+  }
+
+  .field-error {
+    min-height: 1.25rem;
+    margin-top: 0.45rem;
+    color: #8b1d1d;
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+</style>
+
+<script>
+  type FieldErrors = Record<string, string>;
+  type PdfDownload = {
+    filename: string;
+    contentType: string;
+    base64: string;
+  };
+
+  const form = document.querySelector<HTMLFormElement>("[data-reclamacion-form]");
+  const successPanel = document.querySelector<HTMLElement>("[data-success]");
+  const representativeFields = document.querySelector<HTMLElement>("[data-representative-fields]");
+  const minorToggle = document.querySelector<HTMLInputElement>("[data-minor-toggle]");
+  const serviceSelect = document.querySelector<HTMLSelectElement>("[data-service-select]");
+  const otherService = document.querySelector<HTMLElement>("[data-other-service]");
+  const registryType = document.querySelector<HTMLSelectElement>("[data-registry-type]");
+  const registryHelp = document.querySelector<HTMLElement>("[data-registry-help]");
+  const submitButton = document.querySelector<HTMLButtonElement>("[data-submit-button]");
+  const formError = document.querySelector<HTMLElement>("[data-form-error]");
+  const downloadButton = document.querySelector<HTMLButtonElement>("[data-download-pdf]");
+  const successCorrelativo = document.querySelector<HTMLElement>("[data-success-correlativo]");
+  const successFecha = document.querySelector<HTMLElement>("[data-success-fecha]");
+
+  let currentPdf: PdfDownload | null = null;
+  let isSubmitting = false;
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const cePattern = /^[a-zA-Z0-9-]{4,20}$/;
+
+  const setError = (name: string, message: string) => {
+    const target = document.querySelector(`[data-error-for="${name}"]`);
+    if (target) {
+      target.textContent = message || "";
+    }
+  };
+
+  const clearErrors = () => {
+    document.querySelectorAll("[data-error-for]").forEach((node) => {
+      node.textContent = "";
+    });
+
+    if (formError) {
+      formError.textContent = "";
+      formError.classList.add("hidden");
+    }
+  };
+
+  const read = (formData: FormData, key: string) => String(formData.get(key) || "").trim();
+
+  const validateClient = (formData: FormData): FieldErrors => {
+    const errors: FieldErrors = {};
+    const tipoDocumento = read(formData, "tipo_documento");
+    const numeroDocumento = read(formData, "numero_documento");
+    const email = read(formData, "email").toLowerCase();
+    const esMenor = formData.get("es_menor") === "on";
+    const servicio = read(formData, "servicio");
+    const servicioOtro = read(formData, "servicio_otro");
+    const monto = Number(read(formData, "monto_reclamado"));
+
+    if (!["DNI", "CE"].includes(tipoDocumento)) errors.tipo_documento = "Selecciona DNI o CE.";
+    if (tipoDocumento === "DNI" && !/^\d{8}$/.test(numeroDocumento)) errors.numero_documento = "El DNI debe tener exactamente 8 dígitos.";
+    if (tipoDocumento === "CE" && !cePattern.test(numeroDocumento)) errors.numero_documento = "Ingresa un CE válido con letras o números.";
+    if (!read(formData, "nombres_apellidos")) errors.nombres_apellidos = "Ingresa tus nombres y apellidos.";
+    if (!read(formData, "domicilio_consumidor")) errors.domicilio_consumidor = "Ingresa tu domicilio.";
+    if (!read(formData, "telefono")) errors.telefono = "Ingresa un teléfono de contacto.";
+    if (!emailPattern.test(email)) errors.email = "Ingresa un email válido.";
+
+    if (esMenor) {
+      if (!read(formData, "representante_nombre")) errors.representante_nombre = "Ingresa el nombre del representante.";
+      if (!read(formData, "representante_domicilio")) errors.representante_domicilio = "Ingresa el domicilio del representante.";
+      if (!read(formData, "representante_telefono")) errors.representante_telefono = "Ingresa el teléfono del representante.";
+      if (!emailPattern.test(read(formData, "representante_email").toLowerCase())) errors.representante_email = "Ingresa un email válido del representante.";
+    }
+
+    if (!servicio) errors.servicio = "Selecciona un servicio.";
+    if (servicio === "Otro" && !servicioOtro) errors.servicio_otro = "Especifica el servicio.";
+    if (!Number.isFinite(monto) || monto < 0) errors.monto_reclamado = "Ingresa un monto igual o mayor a 0.";
+    if (!["reclamo", "queja"].includes(read(formData, "tipo_registro"))) errors.tipo_registro = "Selecciona reclamo o queja.";
+    if (!read(formData, "asunto")) errors.asunto = "Ingresa el asunto.";
+    if (!read(formData, "descripcion")) errors.descripcion = "Describe qué ocurrió.";
+    if (!read(formData, "pedido")) errors.pedido = "Indica qué solución solicitas.";
+    if (formData.get("declaracion") !== "on") errors.declaracion = "Debes confirmar que la información corresponde a los hechos.";
+    if (formData.get("consentimiento_datos") !== "on") errors.consentimiento_datos = "Debes autorizar el tratamiento de datos.";
+
+    return errors;
+  };
+
+  const syncMinorFields = () => {
+    const isMinor = minorToggle?.checked;
+    representativeFields?.classList.toggle("hidden", !isMinor);
+    representativeFields?.classList.toggle("grid", Boolean(isMinor));
+  };
+
+  const syncOtherService = () => {
+    const isOther = serviceSelect?.value === "Otro";
+    otherService?.classList.toggle("hidden", !isOther);
+  };
+
+  const syncRegistryHelp = () => {
+    if (!registryHelp || !registryType) return;
+    registryHelp.textContent =
+      registryType.value === "queja"
+        ? "Disconformidad relacionada con la atención recibida."
+        : "Disconformidad relacionada con el servicio contratado o recibido.";
+  };
+
+  const base64ToBlob = (base64: string, contentType: string) => {
+    const byteCharacters = atob(base64);
+    const slices = [];
+
+    for (let offset = 0; offset < byteCharacters.length; offset += 1024) {
+      const chunk = byteCharacters.slice(offset, offset + 1024);
+      const byteNumbers = Array.from(chunk, (char) => char.charCodeAt(0));
+      slices.push(new Uint8Array(byteNumbers));
+    }
+
+    return new Blob(slices, { type: contentType });
+  };
+
+  minorToggle?.addEventListener("change", syncMinorFields);
+  serviceSelect?.addEventListener("change", syncOtherService);
+  registryType?.addEventListener("change", syncRegistryHelp);
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+
+    clearErrors();
+    const formData = new FormData(form);
+    const clientErrors = validateClient(formData);
+
+    if (Object.keys(clientErrors).length > 0) {
+      Object.entries(clientErrors).forEach(([key, message]) => setError(key, message));
+      return;
+    }
+
+    const payload: Record<string, unknown> = Object.fromEntries(formData.entries());
+    payload.es_menor = formData.get("es_menor") === "on";
+    payload.declaracion = formData.get("declaracion") === "on";
+    payload.consentimiento_datos = formData.get("consentimiento_datos") === "on";
+
+    isSubmitting = true;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Registrando...";
+    }
+
+    try {
+      const response = await fetch("/api/reclamaciones", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = await response.json();
+
+      if (!response.ok) {
+        if (result.errors) {
+          Object.entries(result.errors).forEach(([key, message]) => setError(key, message));
+        }
+        throw new Error(result.message || "No pudimos registrar tu reclamo en este momento. Por favor, inténtalo nuevamente.");
+      }
+
+      currentPdf = result.pdf;
+      if (successCorrelativo) successCorrelativo.textContent = result.correlativo;
+      if (successFecha) {
+        successFecha.textContent = new Intl.DateTimeFormat("es-PE", {
+          dateStyle: "long",
+          timeStyle: "short",
+        }).format(new Date(result.fecha_reclamo));
+      }
+      form.classList.add("hidden");
+      successPanel?.classList.remove("hidden");
+      successPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch (error) {
+      if (formError) {
+        formError.textContent = error instanceof Error ? error.message : "No pudimos registrar tu reclamo en este momento. Por favor, inténtalo nuevamente.";
+        formError.classList.remove("hidden");
+      }
+    } finally {
+      isSubmitting = false;
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Enviar Hoja de Reclamación";
+      }
+    }
+  });
+
+  downloadButton?.addEventListener("click", () => {
+    if (!currentPdf) return;
+    const blob = base64ToBlob(currentPdf.base64, currentPdf.contentType);
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = currentPdf.filename;
+    document.body.append(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  });
+
+  syncMinorFields();
+  syncOtherService();
+  syncRegistryHelp();
+</script>

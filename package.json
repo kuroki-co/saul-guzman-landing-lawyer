@@ -12,11 +12,17 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "^11.1.5",
+    "@supabase/supabase-js": "^2.116.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.2",
+    "pdf-lib": "^1.17.1",
     "tailwindcss": "^4.3.3"
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "supabase": "^2.117.0"
   }
 }

@@ -8,15 +8,16 @@ const navItems = [
 ] as const;
 
 const linkedinUrl = "https://www.linkedin.com/in/w-sa%C3%BAl-guzm%C3%A1n-v%C3%A1squez-a561981b7/";
+const libroReclamacionesUrl = "/libro-de-reclamaciones";
 ---
 
 <footer class="bg-[#010913] pb-8 pt-14 text-[#efeee9] md:pb-10 md:pt-18 lg:pt-20">
   <div class="mx-auto max-w-[1520px] px-5 md:px-8 lg:px-14">
     <div class="rule-reveal mb-10 h-px w-full origin-left bg-[#c99732]/60 md:mb-12" aria-hidden="true"></div>
-    <div class="grid gap-11 md:grid-cols-[2fr_0.82fr_1fr] md:gap-10 lg:grid-cols-[2fr_0.7fr_0.9fr] lg:gap-12">
+    <div class="grid items-start gap-11 md:grid-cols-[2fr_0.82fr_1fr] md:gap-10 lg:grid-cols-[2fr_0.7fr_0.9fr_7rem] lg:gap-10">
       <div class="scroll-reveal">
         <Image src="/images/sg-logo.jpeg" alt="" width="640" height="640" class="h-16 w-auto" loading="lazy" />
-        <p class="mt-7 max-w-[18rem] text-[1.1rem] leading-[1.35] text-[#efeee9]">Wilfredo Saúl Guzmán Vásquez</p>
+        <p class="mt-6 max-w-[18rem] text-[1.1rem] leading-[1.35] text-[#efeee9]">Wilfredo Saúl Guzmán Vásquez</p>
         <p class="mt-2.5 text-[0.72rem] uppercase tracking-[0.13em] text-[#c99732]/78">Abogado</p>
       </div>
 
@@ -70,6 +71,26 @@ const linkedinUrl = "https://www.linkedin.com/in/w-sa%C3%BAl-guzm%C3%A1n-v%C3%A1
             </a>
           </li>
         </ul>
+      </div>
+
+      <div class="scroll-reveal md:col-start-3 lg:col-start-auto lg:justify-self-start">
+        <a
+          href={libroReclamacionesUrl}
+          class="group flex w-fit flex-col gap-3 transition duration-300 hover:-translate-y-0.5 hover:opacity-88 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c99732] focus-visible:ring-offset-4 focus-visible:ring-offset-[#010913]"
+          aria-label="Abrir Libro de Reclamaciones"
+        >
+          <span class="text-[0.68rem] font-medium uppercase leading-none tracking-[0.18em] text-[#c99732]/78">
+            Atención al Consumidor
+          </span>
+          <Image
+            src="/images/libro-reclamaciones.webp"
+            alt="Libro de Reclamaciones"
+            width="1100"
+            height="930"
+            class="h-auto w-[72px] rounded-[2px] lg:w-[88px]"
+            loading="lazy"
+          />
+        </a>
       </div>
     </div>
 
